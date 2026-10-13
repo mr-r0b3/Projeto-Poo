@@ -28,3 +28,11 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+# Arquivos do banco de dados
+*.db4o
+
+# Configurações locais do IntelliJ IDEA
+.idea/
+
+# Arquivos de módulo do IntelliJ
+*.iml

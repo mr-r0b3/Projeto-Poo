@@ -19,7 +19,11 @@ public class Cliente {
     public void setNome(String nome) { this.nome = nome; }
 
     public List<Orcamento> getOrcamentos() { return orcamentos; }
-    public void adicionarOrcamento(Orcamento o) { this.orcamentos.add(o); }
+    public void adicionarOrcamento(Orcamento o) {
+        if (!orcamentos.contains(o)) {
+            orcamentos.add(o);
+        }
+    }
 
     @Override
     public String toString() {

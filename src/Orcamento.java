@@ -8,10 +8,10 @@ public class Orcamento {
     private double valor;
     private List<Peca> componentes = new ArrayList<>(); // Lista de componentes
 
-    public Orcamento(String data, String cpf, double valor) {
+    public Orcamento(String data, String cpf) {
         this.data = data;
         this.cpf = cpf;
-        this.valor = valor;
+        this.valor = 0;
     }
 
     public int getId() { return id; }
@@ -24,10 +24,23 @@ public class Orcamento {
     public void setCpf(String cpf) { this.cpf = cpf; }
 
     public double getValor() { return valor; }
-    public void setValor(double valor) { this.valor = valor; }
 
     public List<Peca> getComponentes() { return componentes; }
-    public void adicionarComponente(Peca p) { this.componentes.add(p); }
+    public void adicionarComponente(Peca p) {
+        if (!componentes.contains(p)) {
+            componentes.add(p);
+            p.adicionarOrcamento(this);
+            calcularValor();
+        }
+    }
+
+    public double calcularValor() {
+        valor = 0;
+        for (Peca p : componentes) {
+            valor += p.getPreco();
+        }
+        return valor;
+    }
 
     @Override
     public String toString() {

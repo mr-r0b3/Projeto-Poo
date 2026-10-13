@@ -28,7 +28,11 @@ public class Peca {
     public void setEstoque(int estoque) { this.estoque = estoque; }
 
     public List<Orcamento> getOrcamentos() { return orcamentos; }
-    public void adicionarOrcamento(Orcamento o) { this.orcamentos.add(o); }
+    public void adicionarOrcamento(Orcamento o) {
+        if (!orcamentos.contains(o)) {
+            orcamentos.add(o);
+        }
+    }
 
     @Override
     public String toString() {
