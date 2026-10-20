@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Peca {
+    private static int proximoId = 1;
     private int id;
     private String descricao;
     private double preco;
@@ -10,6 +11,7 @@ public class Peca {
     private List<Orcamento> orcamentos = new ArrayList<>();
 
     public Peca(String descricao, double preco, int estoque) {
+        this.id = proximoId++;
         this.descricao = descricao;
         this.preco = preco;
         this.estoque = estoque;

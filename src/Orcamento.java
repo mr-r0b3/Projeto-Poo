@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Orcamento {
+    private static int proximoId = 1;
     private int id;
     private String data;
     private String cpf;
@@ -9,6 +10,7 @@ public class Orcamento {
     private List<Peca> componentes = new ArrayList<>(); // Lista de componentes
 
     public Orcamento(String data, String cpf) {
+        this.id = proximoId++;
         this.data = data;
         this.cpf = cpf;
         this.valor = 0;
@@ -34,12 +36,11 @@ public class Orcamento {
         }
     }
 
-    public double calcularValor() {
+    public void calcularValor() {
         valor = 0;
         for (Peca p : componentes) {
             valor += p.getPreco();
         }
-        return valor;
     }
 
     @Override
