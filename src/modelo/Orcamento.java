@@ -1,8 +1,9 @@
+package modelo;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Orcamento {
-    private static int proximoId = 1;
     private int id;
     private String data;
     private String cpf;
@@ -10,7 +11,6 @@ public class Orcamento {
     private List<Peca> componentes = new ArrayList<>(); // Lista de componentes
 
     public Orcamento(String data, String cpf) {
-        this.id = proximoId++;
         this.data = data;
         this.cpf = cpf;
         this.valor = 0;
@@ -36,6 +36,13 @@ public class Orcamento {
         }
     }
 
+    public void removerComponente(Peca p) {
+        if (componentes.remove(p)) {
+            p.removerOrcamento(this);   // desfaz também o outro lado
+            calcularValor();
+        }
+    }
+
     public void calcularValor() {
         valor = 0;
         for (Peca p : componentes) {
@@ -45,6 +52,6 @@ public class Orcamento {
 
     @Override
     public String toString() {
-        return "Orcamento [id=" + id + ", data=" + data + ", cpf=" + cpf + ", valor=" + valor + ", componentes=" + componentes.size() + "]";
+        return "modelo.Orcamento [id=" + id + ", data=" + data + ", cpf=" + cpf + ", valor=" + valor + ", componentes=" + componentes.size() + "]";
     }
 }

@@ -1,3 +1,4 @@
+package modelo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +26,12 @@ public class Cliente {
         }
     }
 
+    public void removerOrcamento(Orcamento o) {
+        orcamentos.remove(o);
+    }
+
     @Override
     public String toString() {
-        return "Cliente [cpf=" + cpf + ", nome=" + nome + ", orcamentos=" + orcamentos.size() + "]";
+        return "modelo.Cliente [cpf=" + cpf + ", nome=" + nome + ", orcamentos=" + orcamentos.size() + "]";
     }
 }
